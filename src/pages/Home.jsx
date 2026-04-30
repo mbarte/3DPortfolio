@@ -19,7 +19,7 @@ const Home = () => {
             screenPosition = [-1, -5, -22]
         } else {
             screenScale = [1, 1, 1]
-            screenPosition = [-2, -5, -20]
+            screenPosition = [-2, -5, -25]
         }
 
         return [screenScale, screenPosition, rotation]
@@ -30,7 +30,7 @@ const Home = () => {
     return (
         <section className="w-full h-screen relative">
             <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
-                {currentStage && <HomeInfo currentStage = {currentStage}/>}
+                {currentStage && <HomeInfo currentStage = {currentStage} setCurrentStage={setCurrentStage}/>}
             </div>
 
             <Canvas 

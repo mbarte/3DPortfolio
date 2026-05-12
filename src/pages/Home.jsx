@@ -1,5 +1,6 @@
 import React, { useState, Suspense, useEffect, useRef, useFrame} from "react";
 import { Canvas } from "@react-three/fiber";   
+import { Sky, Environment} from "@react-three/drei";
 import Loader from "../components/Loader";
 import Town from "../models/Town";
 import HomeInfo from "../components/HomeInfo";
@@ -38,15 +39,26 @@ const Home = () => {
                 camera ={{ near: 0.1, far: 1000 }}
             >
                 <ambientLight />
-                <Town 
-                    position = {townPosition}
-                    scale  = {townScale}
-                    rotation = {townRotation}
-                    isRotating = {isRotating}
-                    setIsRotating = {setIsRotating}
-                    setCurrentStage = {setCurrentStage}
-                />
-                <Suspense fallback={<Loader/>}></Suspense>
+
+                {/* <Sky
+                    distance={450000}
+                    sunPosition={[0, 1, 0]}
+                    inclination={0.1}
+                    azimuth={0.25}
+                /> */}
+
+                <Environment preset="night" background/>
+
+                <Suspense fallback={<Loader/>}>
+                    <Town 
+                        position = {townPosition}
+                        scale  = {townScale}
+                        rotation = {townRotation}
+                        isRotating = {isRotating}
+                        setIsRotating = {setIsRotating}
+                        setCurrentStage = {setCurrentStage}
+                    />
+                </Suspense>
 
             </Canvas>
         </section>

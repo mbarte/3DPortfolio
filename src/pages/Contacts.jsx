@@ -130,13 +130,13 @@ const Contacts = () => {
                     far:1000
                 }}>
                     <directionalLight intensity={2.5} position={[0, 0, 1]}/>
-                    <ambientLight intensity={0.75}/>
+                    <ambientLight intensity={1}/>
                 <Suspense fallback={<Loader/>}>
-                <Avatar 
-                    currentAnimation={currentAnimation}
-                    position={[0,-0.9,0]}
-                    rotation={[0,-0.3,0]}
-                    scale={[1, 1, 1]}/>
+                    <Avatar 
+                        currentAnimation={currentAnimation}
+                        position={[0.2,-0.7,0]}
+                        rotation={[0,-0.4,0]}
+                        scale={[1, 1, 1]}/>
                 </Suspense>
             </Canvas>
             </div>

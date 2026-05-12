@@ -111,7 +111,7 @@ body:has(.card[data-color="green"]:hover) {
   transition: 250ms;
   transform-style: preserve-3d;
   transform-origin: bottom right;
-  transform: rotateZ(15deg);
+  /* transform: rotateZ(15deg); */
   will-change: transform;
   box-shadow: 16px 0 40px #e4e4e4;
 }

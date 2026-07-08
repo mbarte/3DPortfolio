@@ -10,7 +10,7 @@ const About = () => {
     return (
         <section className="max-container">
             <h1 className="head-text">
-                Hello, I'm <p className="blue-gradient_text font-semibold drop-shadow">Michele</p>
+                Hello, I'm <p className="amber-gradient_text font-semibold drop-shadow">Michele</p>
             </h1>
             <div className="mt-5 flex flex-col gap-3 text-slate-500">
                 <p className="text-lg mb-4">
@@ -22,11 +22,12 @@ const About = () => {
             
                 <div className="mt-5 flex flex-wrap gap-12">
                     {skills.map((skill) => (
-                        <div className="w-20 h-20 block-container">
+                        <div className="w-15 h-15 block-container">
                             <div className="btn-back rounded-xl">
                                 <div className="btn-front rounded-xl flex justify-center items-center">
                                     <img src={skill.imageUrl}
                                         alt={skill.name}
+                                        title = {skill.name}
                                         className="w-1/2 h-1/2 object-contain">   
                                     </img>
                                 </div>
@@ -46,8 +47,8 @@ const About = () => {
                 </div>
                 <div className="mt-12 flex">
                     <VerticalTimeline>
-                       {experiences.map((experience) => (
-                        
+                       {experiences.flatMap((experience, index) => {
+                        const element = (
                         <VerticalTimelineElement
                             key={experience.company_name}
                             date={experience.date}
@@ -71,18 +72,31 @@ const About = () => {
                                     {experience.company_name}
                                 </p>
                                 <ul className="my-5 list-disc ml-5 space-y-2">
-                                    {experience.points.map((point, index) => (
-                                        <li key={`experience-point-${index}`} className="text-black-500/50 font-normal pl-1 text-sm ">
+                                    {experience.points.map((point, idx) => (
+                                        <li key={`experience-point-${idx}`} className="text-black-500/50 font-normal pl-1 text-sm ">
                                             {point}
                                         </li>
                                     ))}
                                 </ul>
                             </div>
                         </VerticalTimelineElement>
-                       ))} 
+                        );
+                        if (index === 2) {
+                            return [
+                                <div key="experience-divider" className="mt-5 flex flex-col gap-3 text-slate-500">
+                                    <p className="text-lg mb-4 z-50">
+                                       Over the years, I have gained experience across both academic and real-world environments. These roles have helped me develop strong <strong>communication</strong>, <strong>organizational</strong>, and <strong>interpersonal</strong> skills
+                                    </p>
+                                </div>,
+                                element
+                            ];
+                        }
+                        return [element];
+                       })} 
                     </VerticalTimeline>
+                    
                 </div>
-
+          
             </div>
 
             <hr className="border-slate-200 my-10"/>

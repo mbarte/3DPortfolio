@@ -1,4 +1,4 @@
-import { unimi, taverna, sph, studioref } from "../assets/images";
+import { unimi, taverna, sph, studioref, mbs } from "../assets/images";
 import {
     car,
     contact,
@@ -194,6 +194,16 @@ export const skills = [
 
 export const experiences = [
     {
+        title: "Full stack Developer",
+        company_name: "MBS Consulting S.p.a - Cerved - ION",
+        icon: mbs,
+        iconBg: "#001437bf",
+        date: "September 2026 - Present",
+        points: [
+            
+        ],
+    },
+    {
         title: "Full Stack Developer",
         company_name: "S+H Technology SA",
         icon: sph,
@@ -216,10 +226,8 @@ export const experiences = [
         iconBg: "#fbc3bc",
         date: "Jul 2023 - Sep 2023",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            "Managed the migration from Zucchetti ERP to Datev Koinos DK Set",
+            "Produced technical and operational documentation for migration procedures and data workflows"
         ],
     },
     {
@@ -229,38 +237,20 @@ export const experiences = [
         iconBg: "#b7e4c7",
         date: "Jan 2023 - Jun 2023",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            "Spreading data literacy by teaching R and data science in high school",
         ],
     },
     {
         title: "Guest Service",
         company_name: "La Taverna di Criscuolo srl",
         icon: taverna,
-        iconBg: "#b7e4c7",
+        iconBg: "#f5ed60",
         date: "Mar 2018 - Jan 2023",
         points: [
-            "Developing and maintaining web applications using React.js and other related technologies.",
-            "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-            "Implementing responsive design and ensuring cross-browser compatibility.",
-            "Participating in code reviews and providing constructive feedback to other developers.",
+            "Head waiter",
         ],
     },
-    // {
-    //     title: "Full stack Developer",
-    //     company_name: "Meta",
-    //     icon: meta,
-    //     iconBg: "#a2d2ff",
-    //     date: "Jan 2023 - Present",
-    //     points: [
-    //         "Developing and maintaining web applications using React.js and other related technologies.",
-    //         "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-    //         "Implementing responsive design and ensuring cross-browser compatibility.",
-    //         "Participating in code reviews and providing constructive feedback to other developers.",
-    //     ],
-    // },
+    
 ];
 
 export const socialLinks = [

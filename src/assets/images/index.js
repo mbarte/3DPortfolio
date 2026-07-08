@@ -8,6 +8,7 @@ import sph from './sph.png'
 import taverna from './taverna.png'
 import studioref from './studioref.png'
 import unimi from './unimi.png'
+import mbs from './mbs.jpeg'
 
 export {
     hero,
@@ -19,5 +20,6 @@ export {
     sph,
     taverna,
     unimi,
-    studioref
+    studioref,
+    mbs
 }

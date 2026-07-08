@@ -131,7 +131,7 @@ const Contacts = () => {
                 }}>
                     <directionalLight intensity={2.5} position={[0, 0, 1]}/>
                     <ambientLight intensity={1}/>
-                <Suspense fallback={<Loader/>}>
+                <Suspense fallback={null}>
                     <Avatar 
                         currentAnimation={currentAnimation}
                         position={[0.2,-0.7,0]}

@@ -4,7 +4,8 @@ import { Sky, Environment, Html} from "@react-three/drei";
 import Loader from "../components/Loader";
 import Town from "../models/Town";
 import HomeInfo from "../components/HomeInfo";
-import Plane from "../models/Plane";
+import Parrot from "../models/Parrot";
+import nightHDR from "../assets/hdr/satara_night_no_lamps_4k.hdr";
 
 const Home = () => {
     const [currentStage, setCurrentStage] = useState(1);
@@ -27,7 +28,7 @@ const Home = () => {
         return [screenScale, screenPosition, rotation]
     }
 
-    const adjustBiplaneForScreenSize = () => {
+    const adjustParrotForScreenSize = () => {
         let screenScale, screenPosition;
 
         // If screen width is less than 768px, adjust the scale and position
@@ -35,8 +36,8 @@ const Home = () => {
             screenScale = [0, 0, 0];
             screenPosition = [0, -1.5, 0];
         } else {
-            screenScale = [2.5, 2.5, 2.5];
-            screenPosition = [0, -2.5, -4];
+            screenScale = [0.8, 0.8, 0.8];
+            screenPosition = [3, 3, -8];
         }
 
         return [screenScale, screenPosition];
@@ -44,7 +45,7 @@ const Home = () => {
 
 
     const [townScale, townPosition, townRotation] = adjustTownForScreenSize();
-    const [biplaneScale, biplanePosition] = adjustBiplaneForScreenSize();
+    const [parrotScale, parrotPosition] = adjustParrotForScreenSize();
 
     return (
         <section className="w-full h-screen relative">
@@ -80,14 +81,18 @@ const Home = () => {
                     azimuth={0.25}
                 /> */}
 
-                <Environment preset="night" background  environmentIntensity={2}/>
+                <Environment files={nightHDR}  
+                background 
+                environmentIntensity={0}
+                backgroundRotation={[30, 0, 0]}
+                />
 
                 <Suspense fallback={<Loader/>}>
-                    <Plane
+                    <Parrot
                         isRotating={isRotating}
-                        position={biplanePosition}
-                        rotation={[0, 20.1, 0]}
-                        scale={biplaneScale}
+                        position={parrotPosition}
+                        rotation={[0, 0, 0]}
+                        scale={parrotScale}
                     />
                     
                     <Town 

@@ -8,7 +8,7 @@ import CTA from '../components/CTA';
 const Projects = () => {
     return (
         <section className="max-container">
-            <h1 className="head-text">
+            <h1 className="head-text flex gap-3">
                 My <p className="amber-gradient_text font-semibold drop-shadow">Projects</p>
             </h1>
             <div className="mt-5 flex flex-col gap-3 text-slate-500">

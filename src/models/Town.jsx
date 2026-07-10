@@ -44,7 +44,7 @@ const Town = ({isRotating, setIsRotating, setCurrentStage, ...props}) =>{ //useE
     if (isRotating) {
         const clientX = event.touches ? event.touches[0].clientX : event.clientX;
         const delta = (clientX - lastX.current) / viewport.width;
-        townRef.current.rotation.y += delta * 0.01 * Math.PI;
+        townRef.current.rotation.y += delta * 0.005 * Math.PI;
         lastX.current = clientX;
         rotationSpeed.current = delta * 0.01 * Math.PI;
     } 
@@ -53,10 +53,10 @@ const Town = ({isRotating, setIsRotating, setCurrentStage, ...props}) =>{ //useE
   const handleKeyDown = (event) => {
     if (event.key === 'ArrowLeft'){
         if(!isRotating) setIsRotating(true);
-        townRef.current.rotation.y += 0.01 * Math.PI;
+        townRef.current.rotation.y += 0.006 * Math.PI;
     } else if (event.key === 'ArrowRight') {
         if (!isRotating) setIsRotating(true);
-        townRef.current.rotation.y -= 0.01 * Math.PI;
+        townRef.current.rotation.y -= 0.006 * Math.PI;
     }
   }
 
@@ -98,16 +98,16 @@ const Town = ({isRotating, setIsRotating, setCurrentStage, ...props}) =>{ //useE
 
         // Set the current stage based on the island's orientation
         switch (true) {
-        case normalizedRotation >= 5.45 && normalizedRotation <= 5.85:
+        case normalizedRotation >= 5.45 && normalizedRotation <= 6.15:
             setCurrentStage(4);
             break;
-        case normalizedRotation >= 0.85 && normalizedRotation <= 1.3:
+        case normalizedRotation >= 0.85 && normalizedRotation <= 1.55:
             setCurrentStage(3);
             break;
-        case normalizedRotation >= 2.4 && normalizedRotation <= 2.6:
+        case normalizedRotation >= 2.4 && normalizedRotation <= 3.1:
             setCurrentStage(2);
             break;
-        case normalizedRotation >= 4.25 && normalizedRotation <= 4.75:
+        case normalizedRotation >= 4.25 && normalizedRotation <= 4.95:
             setCurrentStage(1);
             break;
         default:

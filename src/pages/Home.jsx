@@ -50,8 +50,8 @@ const Home = () => {
             screenScale = [0.75, 0.75, 0.75]
             screenPosition = [-1, -5, -22]
         } else {
-            screenScale = [1, 1, 1]
-            screenPosition = [-2, -5, -25]
+            screenScale = [1.5, 1.5, 1.5]
+            screenPosition = [1, -7, -30]
         }
 
         return [screenScale, screenPosition, rotation]
@@ -65,8 +65,8 @@ const Home = () => {
             screenScale = [0, 0, 0];
             screenPosition = [0, -1.5, 0];
         } else {
-            screenScale = [0.8, 0.8, 0.8];
-            screenPosition = [3, 3, -8];
+            screenScale = [0.4, 0.4, 0.4];
+            screenPosition = [3, 2, 0];
         }
 
         return [screenScale, screenPosition];
@@ -125,10 +125,11 @@ const Home = () => {
                     azimuth={0.25}
                 /> */}
 
-                <Environment files={nightHDR}  
-                background 
-                environmentIntensity={0}
-                backgroundRotation={[30, 0, 0]}
+                <Environment 
+                    files={nightHDR}  
+                    background 
+                    environmentIntensity={0}
+                    backgroundRotation={[30, 0, 0]}
                 />
 
                 {/* <Suspense fallback={<Loader/>}> */}

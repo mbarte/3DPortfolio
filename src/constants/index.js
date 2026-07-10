@@ -41,7 +41,8 @@ import {
     postman,
     digitalocean,
     cloudserver,
-    nginx
+    nginx, 
+    playwright
 } from "../assets/icons";
 
 export const skills = [
@@ -85,6 +86,16 @@ export const skills = [
         type: "Backend",
     },
     {
+        imageUrl: fastapi,
+        name: "fastAPI",
+        type: "Backend",
+    },
+    {
+        imageUrl: flask,
+        name: "Flask",
+        type: "Backend",
+    },
+    {
         imageUrl: php,
         name: "PHP",
         type: "Backend",
@@ -97,16 +108,6 @@ export const skills = [
     {
         imageUrl: celery,
         name: "Celery",
-        type: "Backend",
-    },
-    {
-        imageUrl: flask,
-        name: "Flask",
-        type: "Backend",
-    },
-    {
-        imageUrl: fastapi,
-        name: "fastAPI",
         type: "Backend",
     },
     {
@@ -150,6 +151,11 @@ export const skills = [
     {
         imageUrl: postman,
         name: "Postman",
+        type: "Testing",
+    },
+    {
+        imageUrl: playwright,
+        name: "Playwright",
         type: "Testing",
     },
     // VERSION CONTROL

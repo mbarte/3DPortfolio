@@ -44,6 +44,7 @@ import postman from './postman.svg'
 import digitalocean from './digitalocean.svg'
 import cloudserver from './cloudserver.svg'
 import nginx from './nginx.svg'
+import playwright from './playwright.svg'
 
 export {
     css,
@@ -91,5 +92,6 @@ export {
     postman,
     digitalocean,
     cloudserver,
-    nginx
+    nginx,
+    playwright
 }

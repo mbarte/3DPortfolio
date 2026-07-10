@@ -11,38 +11,55 @@ const About = () => {
 
     return (
         <section className="max-container">
-            <h1 className="head-text">
+            <h1 className="head-text flex gap-3">
                 Hello, I'm <p className="amber-gradient_text font-semibold drop-shadow">Michele</p>
             </h1>
             <div className="mt-5 flex flex-col gap-3 text-slate-500">
                 <p className="text-lg mb-4">
-                    I'm a passionate software engineer based in Italy, with a love for creating innovative solutions. With experience in various programming languages and frameworks, I enjoy tackling complex problems and building applications that make a difference.
+                    I'm a passionate <strong>software</strong> and <strong>AI engineer</strong> based in Italy, with a love for creating innovative solutions. With experience in various programming languages and frameworks, I enjoy tackling complex problems and building applications that make a difference.
                 </p>
             </div>
             <div className="py-10 flex flex-col">
                 <h3 className="subhead-text">My Skills</h3>
-            
-                <div className="mt-5 flex flex-wrap gap-12">
-                    {skills.map((skill, index) => (
-                        <div className="w-15 h-15 block-container"
-                            onMouseEnter={() => setActiveSkill(index)}
-                            onMouseLeave={() => setActiveSkill(false)}>
-                            <div className="btn-back rounded-xl">
-                                <div className="btn-front rounded-xl flex justify-center items-center">
-                                    <img src={skill.imageUrl}
-                                        alt={skill.name}
-                                        
-                                        className="w-1/2 h-1/2 object-contain">   
-                                    </img>
-                                </div>
-                            </div>
-                                    {activeSkill === index  && (
-                                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-10">
-                                            <p className="text-xs text-amber-600 font-medium whitespace-nowrap bg-white/90 px-2 py-1 rounded shadow-sm">
-                                                {skill.name}
-                                            </p>
+
+                <div className="mt-12 flex flex-col gap-12">
+                    {Object.entries(
+                        skills.reduce((acc, skill) => {
+                            (acc[skill.type] = acc[skill.type] || []).push(skill);
+                            return acc;
+                        }, {})
+                    ).map(([type, items]) => (
+                        <div key={type}>
+                            <h4 className="text-sm font-semibold text-amber-600 uppercase tracking-wider mb-4">
+                                {type}
+                            </h4>
+                            <div className="flex flex-wrap gap-8">
+                                {items.map((skill) => (
+                                    <div key={skill.name}
+                                        className="w-15 h-15 block-container relative"
+                                        onMouseEnter={() => setActiveSkill(skill.name)}
+                                        onMouseLeave={() => setActiveSkill(null)}
+                                        onFocus={() => setActiveSkill(skill.name)}
+                                        onBlur={() => setActiveSkill(null)}
+                                    >
+                                        <div className="btn-back rounded-xl">
+                                            <div className="btn-front rounded-xl flex justify-center items-center">
+                                                <img src={skill.imageUrl}
+                                                    alt={skill.name}
+                                                    className="w-1/2 h-1/2 object-contain">
+                                                </img>
+                                            </div>
                                         </div>
-                                    )}
+                                        {activeSkill === skill.name && (
+                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-10 pointer-events-none transition-opacity duration-200">
+                                                <p className="text-xs text-amber-600 font-medium whitespace-nowrap bg-white/90 px-2 py-1 rounded shadow-sm">
+                                                    {skill.name}
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     ))}
                 </div>

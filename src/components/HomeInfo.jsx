@@ -1,25 +1,63 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 
-const TypingInfoBox = ({text, link, btnText, onClick} ) => {
-  const [displayed, setDisplayed] = useState('')
+// const TypingInfoBox = ({text, link, btnText, onClick} ) => {
+//   const [displayed, setDisplayed] = useState('')
+//   const [done, setDone] = useState(false)
+
+//   useEffect(() => {
+//     if (displayed === text) {
+//       setDone(true)
+//       return
+//     }
+//     const timer = setTimeout(() => {
+//       setDisplayed(text.slice(0, displayed.length + 1))
+//     }, 70)
+//     return () => clearTimeout(timer)
+//   }, [displayed, text])
+
+//   return (
+//     <div className="sm:text-xl sm:leading-snug text-center py-4 px-8 text-white mx-5">
+//     <p className='bg-amber-400/70 px-4 rounded-xl'>{displayed}{!done && <span className="animate-cursor">▌</span>}</p>
+//     <br/>
+//     {btnText && (link ? (
+//         <Link to={link} className="btn">
+//           {btnText}
+//         </Link>
+//       ) : (
+//         <button onClick={onClick} className="btn">
+//           {btnText}
+//         </button>
+//       ))}
+//   </div>)
+// }
+
+const TypingInfoBox = ({text, link, btnText, onClick}) => {
+  const [count, setCount] = useState(0)
   const [done, setDone] = useState(false)
+
+  const graphemes = useMemo(
+    () => [...new Intl.Segmenter('en', { granularity: 'grapheme' }).segment(text)]
+      .map(s => s.segment),
+    [text]
+  )
+
+  const displayed = graphemes.slice(0, count).join('')
+
   useEffect(() => {
-    if (displayed === text) {
+    if (count >= graphemes.length) {
       setDone(true)
       return
     }
-    const timer = setTimeout(() => {
-      setDisplayed(text.slice(0, displayed.length + 1))
-    }, 40)
+    const timer = setTimeout(() => setCount(c => c + 1), 50)
     return () => clearTimeout(timer)
-  }, [displayed, text])
+  }, [count, graphemes.length])
 
   return (
     <div className="sm:text-xl sm:leading-snug text-center py-4 px-8 text-white mx-5">
-    <p>{displayed}{!done && <span className="animate-pulse"></span>}|</p>
-    <br/>
-    {btnText && (link ? (
+      <p className='bg-amber-400/70 px-4 rounded-xl'>{displayed}{!done && <span className="animate-cursor">▌</span>}</p>
+      <br/>
+      {btnText && (link ? (
         <Link to={link} className="btn">
           {btnText}
         </Link>
@@ -28,14 +66,15 @@ const TypingInfoBox = ({text, link, btnText, onClick} ) => {
           {btnText}
         </button>
       ))}
-  </div>)
+    </div>
+  )
 }
 
 
 const renderContent = {
   1: () => (
       <TypingInfoBox
-        text="Welcome to my portfolio! 👋🏻 Please, take a look around"/> 
+        text="Welcome to my portfolio! 👋🏻 I'm Michele! Please, take a look around"/> 
   ),
   2: () => (
       <TypingInfoBox

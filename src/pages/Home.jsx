@@ -1,13 +1,42 @@
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useRef, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";   
-import { Sky, Environment, Html} from "@react-three/drei";
+import {Environment, useProgress} from "@react-three/drei";
 import Loader from "../components/Loader";
 import Town from "../models/Town";
-import HomeInfo from "../components/HomeInfo";
 import Parrot from "../models/Parrot";
-import nightHDR from "../assets/hdr/satara_night_no_lamps_4k.hdr";
+import HomeInfo from "../components/HomeInfo";
+import nightHDR from "../assets/hdr/stars_bg.exr";
+import {soundoff, soundon} from "../assets/icons";
+import soundtrack from "../assets/audio/soundtrack.mp3"; 
+
 
 const Home = () => {
+    const { progress } = useProgress()
+    const [showSplash, setShowSplash] = useState(true)
+
+    useEffect(() => {
+    if (progress === 100) {
+        const timer = setTimeout(() => setShowSplash(false), 600)
+        return () => clearTimeout(timer)
+    }
+    }, [progress])
+
+    const audioRef = useRef(new Audio(soundtrack))
+    audioRef.current.volume = 0.4;
+    audioRef.current.loop = true;
+    const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+    const [showCredit, setShowCredit] = useState(false);
+
+    useEffect(()=> {
+        if (isPlayingMusic) {
+            audioRef.current.play();
+        }
+        return () => {
+            audioRef.current.pause();
+        }
+    }, [isPlayingMusic])
+
+
     const [currentStage, setCurrentStage] = useState(1);
     const [isRotating, setIsRotating] = useState(false);
 
@@ -43,11 +72,26 @@ const Home = () => {
         return [screenScale, screenPosition];
     };
 
-
     const [townScale, townPosition, townRotation] = adjustTownForScreenSize();
     const [parrotScale, parrotPosition] = adjustParrotForScreenSize();
 
     return (
+        <>
+        {showSplash &&(
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-900">
+            
+            <p className="text-amber-400/80 text-lg font-medium mb-4">Loading...</p>
+            <div className="w-48 h-1.5 bg-slate-700 rounded-full overflow-hidden">
+            <div
+                className="h-full bg-amber-400 rounded-full transition-all duration-300 ease-out"
+                style={{ width: `${progress}%` }}
+            />
+            </div>
+        </div>
+        )}
+        
+        
+
         <section className="w-full h-screen relative">
             <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
                 {currentStage && <HomeInfo currentStage = {currentStage} setCurrentStage={setCurrentStage}/>}
@@ -87,7 +131,7 @@ const Home = () => {
                 backgroundRotation={[30, 0, 0]}
                 />
 
-                <Suspense fallback={<Loader/>}>
+                {/* <Suspense fallback={<Loader/>}> */}
                     <Parrot
                         isRotating={isRotating}
                         position={parrotPosition}
@@ -104,13 +148,37 @@ const Home = () => {
                         setCurrentStage = {setCurrentStage}
                     />
 
-                </Suspense>
+                {/* </Suspense> */}
             </Canvas>
 
+
             <div className="absolute bottom-6 left-0 right-0 flex justify-center">
-                <p className="text-amber-400/75 text-sm whitespace-nowrap">Welcome to my portfolio! 👋🏻 Navigate around by dragging or using arrows to explore</p>
+                <p className="text-amber-400/75 text-sm whitespace-nowrap">Navigate around by dragging or using arrows to explore</p>
+            </div>
+            <div
+            className="absolute bottom-2 left-2 flex items-center gap-3"
+            onMouseEnter={() => setShowCredit(true)}
+            onMouseLeave={() => setShowCredit(false)}
+            >
+            <img
+                src={!isPlayingMusic ? soundoff : soundon}
+                alt={isPlayingMusic ? "Mute music" : "Play music"}
+                className="w-10 h-10 cursor-pointer object-contain"
+                onClick={() => setIsPlayingMusic(!isPlayingMusic)}
+                onFocus={() => setShowCredit(true)}
+                onBlur={() => setShowCredit(false)}
+                tabIndex={0}
+            />
+            {showCredit && (
+                <p className="text-amber-400/75 text-xs whitespace-nowrap">
+                Music track: Neo Nebula by Project Ex<br></br>
+                Source: https://freetouse.com/music<br></br>
+                Free Background Music for Video
+                </p>
+            )}
             </div>
         </section>
+        </>
     )
 }
 

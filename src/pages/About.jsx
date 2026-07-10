@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
@@ -7,6 +7,8 @@ import { experiences, skills } from "../constants";
 import CTA from "../components/CTA";
 
 const About = () => {
+    const [activeSkill, setActiveSkill] = useState(null);
+
     return (
         <section className="max-container">
             <h1 className="head-text">
@@ -21,24 +23,33 @@ const About = () => {
                 <h3 className="subhead-text">My Skills</h3>
             
                 <div className="mt-5 flex flex-wrap gap-12">
-                    {skills.map((skill) => (
-                        <div className="w-15 h-15 block-container">
+                    {skills.map((skill, index) => (
+                        <div className="w-15 h-15 block-container"
+                            onMouseEnter={() => setActiveSkill(index)}
+                            onMouseLeave={() => setActiveSkill(false)}>
                             <div className="btn-back rounded-xl">
                                 <div className="btn-front rounded-xl flex justify-center items-center">
                                     <img src={skill.imageUrl}
                                         alt={skill.name}
-                                        title = {skill.name}
+                                        
                                         className="w-1/2 h-1/2 object-contain">   
                                     </img>
                                 </div>
                             </div>
+                                    {activeSkill === index  && (
+                                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-10">
+                                            <p className="text-xs text-amber-600 font-medium whitespace-nowrap bg-white/90 px-2 py-1 rounded shadow-sm">
+                                                {skill.name}
+                                            </p>
+                                        </div>
+                                    )}
                         </div>
                     ))}
                 </div>
 
             </div>
 
-            <div className="py-16">
+            <div className="mt-12 py-16">
                 <h3 className="subhead-text">Work Experience</h3>
                 <div className="mt-5 flex flex-col gap-3 text-slate-500">
                     <p className="text-lg mb-4">

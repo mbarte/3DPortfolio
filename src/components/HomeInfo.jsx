@@ -1,10 +1,23 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 
-const InfoBox = ({text, link, btnText, onClick} ) => {
+const TypingInfoBox = ({text, link, btnText, onClick} ) => {
+  const [displayed, setDisplayed] = useState('')
+  const [done, setDone] = useState(false)
+  useEffect(() => {
+    if (displayed === text) {
+      setDone(true)
+      return
+    }
+    const timer = setTimeout(() => {
+      setDisplayed(text.slice(0, displayed.length + 1))
+    }, 40)
+    return () => clearTimeout(timer)
+  }, [displayed, text])
+
   return (
-    <div className="sm:text-xl sm:leading-snug text-center py-4 px-8 text-black mx-5 rounded-lg bg-amber-100 bg-clip-border">
-    <p dangerouslySetInnerHTML={ {__html: text }}></p>
+    <div className="sm:text-xl sm:leading-snug text-center py-4 px-8 text-white mx-5">
+    <p>{displayed}{!done && <span className="animate-pulse"></span>}|</p>
     <br/>
     {btnText && (link ? (
         <Link to={link} className="btn">
@@ -18,28 +31,26 @@ const InfoBox = ({text, link, btnText, onClick} ) => {
   </div>)
 }
 
+
 const renderContent = {
-  1: (setCurrentStage) => (
-    <InfoBox 
-      text = "Welcome to my portfolio! 👋🏻"
-      btnText="Got it!"
-      onClick={() => setCurrentStage(null)}
-    />
+  1: () => (
+      <TypingInfoBox
+        text="Welcome to my portfolio! 👋🏻 Please, take a look around"/> 
   ),
   2: () => (
-      <InfoBox
+      <TypingInfoBox
         text="Learn more about my story 📖"
         link="/about"
         btnText="Learn More"/> 
   ),
   3: () => (
-    <InfoBox
+    <TypingInfoBox
     text="Learn more about my projects 💡"
     link="/projects"
     btnText="Take me to the projects!"/> 
   ),
   4: () => (
-    <InfoBox
+    <TypingInfoBox
     text="Let's get in touch! 📬"
     link="/contact"
     btnText="Contacts"/> 

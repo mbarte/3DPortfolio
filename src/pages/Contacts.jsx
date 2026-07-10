@@ -60,7 +60,7 @@ const Contacts = () => {
     }
 
     return (
-        <section className="relative flex lg:flex-row flex-col max-container">
+        <section className="relative flex lg:flex-row flex-col max-container !min-h-screen">
             {alert.show && <Alert {...alert}/>}
           
             <div className="flex-1 min-w-[50%] flex flex-col">
@@ -134,8 +134,8 @@ const Contacts = () => {
                 <Suspense fallback={null}>
                     <Avatar 
                         currentAnimation={currentAnimation}
-                        position={[0.2,-0.7,0]}
-                        rotation={[0,-0.4,0]}
+                        position={[0.2,-0.3,0]}
+                        rotation={[0.5,-0.4,0]}
                         scale={[1, 1, 1]}/>
                 </Suspense>
             </Canvas>

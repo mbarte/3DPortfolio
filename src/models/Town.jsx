@@ -12,7 +12,9 @@ import { a } from '@react-spring/three'
 
 import townScene from '../assets/3d/baker_and_the_bridge.glb'
 import { useFrame, useThree } from '@react-three/fiber'
-const Town = ({isRotating, setIsRotating, setCurrentStage, ...props}) =>{ //useEffect, useRef, useState
+import Exclamation from './Exclamation'
+
+const Town = ({isRotating, setIsRotating, setCurrentStage, currentStage, ...props}) =>{ //useEffect, useRef, useState
   const townRef = useRef()
 
   const { nodes, materials } = useGLTF(townScene)
@@ -98,17 +100,17 @@ const Town = ({isRotating, setIsRotating, setCurrentStage, ...props}) =>{ //useE
 
         // Set the current stage based on the island's orientation
         switch (true) {
-        case normalizedRotation >= 5.45 && normalizedRotation <= 6.15:
-            setCurrentStage(4);
+        case normalizedRotation >= 5.7 && normalizedRotation <= 6.2:
+            setCurrentStage(1);
             break;
-        case normalizedRotation >= 0.85 && normalizedRotation <= 1.55:
-            setCurrentStage(3);
-            break;
-        case normalizedRotation >= 2.4 && normalizedRotation <= 3.1:
+        case normalizedRotation >= 4.2 && normalizedRotation <= 4.7:
             setCurrentStage(2);
             break;
-        case normalizedRotation >= 4.25 && normalizedRotation <= 4.95:
-            setCurrentStage(1);
+        case normalizedRotation >= 2.7 && normalizedRotation <= 3.2:
+            setCurrentStage(3);
+            break;
+        case normalizedRotation >= 1.3 && normalizedRotation <= 2.0:
+            setCurrentStage(4);
             break;
         default:
             setCurrentStage(null);
@@ -135,6 +137,10 @@ const Town = ({isRotating, setIsRotating, setCurrentStage, ...props}) =>{ //useE
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
   return (
     <a.group ref={townRef} {...props} dispose={null}>
+      <Exclamation position={[3, 7.5, 14]} stage={1} currentStage={currentStage} />
+      <Exclamation position={[17, 6.5, -3]} stage={2} currentStage={currentStage} />
+      <Exclamation position={[0, 7.4, -15]} stage={3} currentStage={currentStage} />
+      <Exclamation position={[-15, 6.5, -6]} stage={4} currentStage={currentStage} />
       <group rotation={[Math.PI / 2, 0, -Math.PI]}>
         <group rotation={[-Math.PI, 0, 0]} scale={0.01}>
           <group rotation={[0, 0, -Math.PI / 2]} scale={100}>
@@ -237,6 +243,7 @@ const Town = ({isRotating, setIsRotating, setCurrentStage, ...props}) =>{ //useE
             rotation={[0, 0, -Math.PI / 2]}
             scale={100}
           />
+          
         </group>
       </group>
     </a.group>

@@ -44,7 +44,7 @@ const Home = () => {
         let screenScale = null
         let screenPosition = null
         
-        let rotation = [0.1, 4.7, 0]
+        let rotation = [0.1, 6.2, 0]
 
         if (window.innerWidth < 768){
             screenScale = [0.75, 0.75, 0.75]
@@ -66,14 +66,17 @@ const Home = () => {
             screenPosition = [0, -1.5, 0];
         } else {
             screenScale = [0.4, 0.4, 0.4];
-            screenPosition = [3, 2, 0];
+            screenPosition = [1, 2, 0];
         }
 
         return [screenScale, screenPosition];
     };
+   
 
     const [townScale, townPosition, townRotation] = adjustTownForScreenSize();
     const [parrotScale, parrotPosition] = adjustParrotForScreenSize();
+
+
 
     return (
         <>
@@ -93,7 +96,7 @@ const Home = () => {
         
 
         <section className="w-full h-screen relative">
-            <div className="absolute top-28 left-0 right-0 z-10 flex items-center justify-center">
+            <div className="absolute bottom-32 left-0 right-0 z-10 flex items-center justify-center">
                 {currentStage && <HomeInfo currentStage = {currentStage} setCurrentStage={setCurrentStage}/>}
             </div>
 
@@ -147,6 +150,7 @@ const Home = () => {
                         isRotating = {isRotating}
                         setIsRotating = {setIsRotating}
                         setCurrentStage = {setCurrentStage}
+                        currentStage = {currentStage}
                     />
 
                 {/* </Suspense> */}

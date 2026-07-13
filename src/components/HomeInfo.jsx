@@ -55,7 +55,7 @@ const TypingInfoBox = ({text, link, btnText, onClick}) => {
 
   return (
     <div className="sm:text-xl sm:leading-snug text-center py-4 px-8 text-white mx-5">
-      <p className='bg-amber-400/70 px-4 rounded-xl'>{displayed}{!done && <span className="animate-cursor">▌</span>}</p>
+      <p className='bg-amber-400 px-4 rounded-xl'>{displayed}{!done && <span className="animate-cursor">▌</span>}</p>
       <br/>
       {btnText && (link ? (
         <Link to={link} className="btn">

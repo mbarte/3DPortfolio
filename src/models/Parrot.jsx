@@ -21,7 +21,7 @@ const Parrot =  ({isRotating, ...props}) => {
     if (isRotating) {
       actions["Object_0"].play();
     } else {
-      actions["Object_0"].stop();
+      actions["Object_0"].play();
     }
   }, [actions, isRotating]);
 

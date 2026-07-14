@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react'
 import { Link } from 'react-router-dom'
+import infoIcon from '../assets/icons/info.png'
 
 // const TypingInfoBox = ({text, link, btnText, onClick} ) => {
 //   const [displayed, setDisplayed] = useState('')
@@ -59,10 +60,12 @@ const TypingInfoBox = ({text, link, btnText, onClick}) => {
       <br/>
       {btnText && (link ? (
         <Link to={link} className="btn">
+          <img src={infoIcon} className="text-white w-4 h-4 inline-block mr-2" alt="info icon"></img>
           {btnText}
         </Link>
       ) : (
         <button onClick={onClick} className="btn">
+          <img src={infoIcon}></img>
           {btnText}
         </button>
       ))}
@@ -80,13 +83,13 @@ const renderContent = {
       <TypingInfoBox
         text="Learn more about my story 📖"
         link="/about"
-        btnText="Learn More"/> 
+        btnText="More"/> 
   ),
   3: () => (
     <TypingInfoBox
     text="Learn more about my projects 💡"
     link="/projects"
-    btnText="Take me to the projects!"/> 
+    btnText="More"/> 
   ),
   4: () => (
     <TypingInfoBox

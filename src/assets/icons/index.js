@@ -45,6 +45,9 @@ import digitalocean from './digitalocean.svg'
 import cloudserver from './cloudserver.svg'
 import nginx from './nginx.svg'
 import playwright from './playwright.svg'
+import website from './website.png'
+import neuralnetwork from './neuralnetwork.png'
+import infoIcon from './info.png'
 
 export {
     css,
@@ -93,5 +96,8 @@ export {
     digitalocean,
     cloudserver,
     nginx,
-    playwright
+    playwright,
+    website,
+    neuralnetwork,
+    infoIcon
 }

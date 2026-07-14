@@ -62,8 +62,8 @@ const Home = () => {
 
         // If screen width is less than 768px, adjust the scale and position
         if (window.innerWidth < 768) {
-            screenScale = [0, 0, 0];
-            screenPosition = [0, -1.5, 0];
+            screenScale = [0.3, 0.3, 0.3];
+            screenPosition = [1, 2, 0];
         } else {
             screenScale = [0.4, 0.4, 0.4];
             screenPosition = [1, 2, 0];
@@ -71,10 +71,29 @@ const Home = () => {
 
         return [screenScale, screenPosition];
     };
+
+    const adjustExclamationForScreenSize = () => {
+        if (window.innerWidth < 768) {
+            return {
+                stage1: [6, 7, 12],
+                stage2: [17, 6.5, -5],
+                stage3: [-5, 6.4, -15],
+                stage4: [-18, 6.5, 0],
+            }
+        } else {
+            return {
+                stage1: [3, 7.5, 14],
+                stage2: [17, 6.5, -3],
+                stage3: [0, 7.4, -15],
+                stage4: [-15, 6.5, -6],
+            }
+        }
+    }
    
 
     const [townScale, townPosition, townRotation] = adjustTownForScreenSize();
     const [parrotScale, parrotPosition] = adjustParrotForScreenSize();
+    const exclamationPositions = adjustExclamationForScreenSize();
 
 
 
@@ -151,6 +170,8 @@ const Home = () => {
                         setIsRotating = {setIsRotating}
                         setCurrentStage = {setCurrentStage}
                         currentStage = {currentStage}
+                        exclamationPositions={exclamationPositions}
+
                     />
 
                 {/* </Suspense> */}

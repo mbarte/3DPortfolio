@@ -186,3 +186,7 @@ body:has(.card[data-color="green"]:hover) {
 
 @keyframes blink { 0%, 50% { opacity: 1 } 51%, 100% { opacity: 0 } }
 .animate-cursor { animation: blink 0.8s step-end infinite; }
+
+canvas {
+  touch-action: none;
+}

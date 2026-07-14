@@ -14,7 +14,7 @@ import townScene from '../assets/3d/baker_and_the_bridge.glb'
 import { useFrame, useThree } from '@react-three/fiber'
 import Exclamation from './Exclamation'
 
-const Town = ({isRotating, setIsRotating, setCurrentStage, currentStage, ...props}) =>{ //useEffect, useRef, useState
+const Town = ({isRotating, setIsRotating, setCurrentStage, currentStage, exclamationPositions, ...props}) =>{ //useEffect, useRef, useState
   const townRef = useRef()
 
   const { nodes, materials } = useGLTF(townScene)
@@ -137,10 +137,10 @@ const Town = ({isRotating, setIsRotating, setCurrentStage, currentStage, ...prop
   }, [gl, handlePointerDown, handlePointerUp, handlePointerMove]);
   return (
     <a.group ref={townRef} {...props} dispose={null}>
-      <Exclamation position={[3, 7.5, 14]} stage={1} currentStage={currentStage} />
-      <Exclamation position={[17, 6.5, -3]} stage={2} currentStage={currentStage} />
-      <Exclamation position={[0, 7.4, -15]} stage={3} currentStage={currentStage} />
-      <Exclamation position={[-15, 6.5, -6]} stage={4} currentStage={currentStage} />
+      <Exclamation position={exclamationPositions.stage1} stage={1} currentStage={currentStage} />
+      <Exclamation position={exclamationPositions.stage2} stage={2} currentStage={currentStage} />
+      <Exclamation position={exclamationPositions.stage3} stage={3} currentStage={currentStage} />
+      <Exclamation position={exclamationPositions.stage4} stage={4} currentStage={currentStage} />
       <group rotation={[Math.PI / 2, 0, -Math.PI]}>
         <group rotation={[-Math.PI, 0, 0]} scale={0.01}>
           <group rotation={[0, 0, -Math.PI / 2]} scale={100}>

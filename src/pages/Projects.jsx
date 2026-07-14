@@ -2,7 +2,7 @@ import React from "react";
 
 import { projects } from "../constants";
 import { Link } from "react-router-dom";
-import {arrow} from "../assets/icons";
+import {infoIcon} from "../assets/icons";
 import CTA from '../components/CTA';
 
 const Projects = () => {
@@ -13,7 +13,7 @@ const Projects = () => {
             </h1>
             <div className="mt-5 flex flex-col gap-3 text-slate-500">
                 <p className="text-lg mb-4">
-                    I have embarqued on numerous projects throughout the years, and these are the ones that I hold closest to my heart. Feel free to explore the codebase and contribute with your ideas for further development.
+                    I have embarqued on numerous projects throughout the years, and this is a non-exhaustive list that will be continuously updated. Feel free to explore the codebase, where available, and contribute with your ideas for further development.
                     Your collaboration is highly valuable!
                 </p>
             </div>
@@ -48,8 +48,8 @@ const Projects = () => {
                                     More
                                 </Link>
                                 <img
-                                    src={arrow}
-                                    alt="arrow"
+                                    src={infoIcon}
+                                    alt="info icon"
                                     className="w-4 h-4 object-contain">
                                 </img>
                             </div>

@@ -262,24 +262,27 @@ export const experiences = [
 ];
 
 export const socialLinks = [
-    {
-        name: 'Contact',
-        iconUrl: contact,
-        link: '/contact',
-    },
+    
     {
         name: 'GitHub',
         iconUrl: github,
-        link: 'https://github.com/YourGitHubUsername',
+        link: 'https://github.com/mbarte',
     },
     {
         name: 'LinkedIn',
         iconUrl: linkedin,
-        link: 'https://www.linkedin.com/in/YourLinkedInUsername',
+        link: 'https://it.linkedin.com/in/michele-bartesaghi-30b915256',
     }
 ];
 
 export const projects = [
+    {
+        iconUrl: estate,
+        theme: 'btn-back-black',
+        name: '3D Portfolio',
+        description: 'Developed a 3D portfolio inspired by adrianhajdin.',
+        link: 'https://github.com/mbarte/3DPortfolio',
+    },
     {
         iconUrl: website,
         theme: 'btn-back-green',
@@ -298,9 +301,9 @@ export const projects = [
         iconUrl: neuralnetwork,
         theme: 'btn-back-pink',
         name: 'Convolutional Neural Networks',
-        description: 'Designed and trained machine learning models for image classification',
+        description: 'Designed and trained machine learning models for image classification.',
         link: 'https://github.com/mbarte/AMD',
-    }
+    },
     // {
     //     iconUrl: threads,
     //     theme: 'btn-back-green',
@@ -316,13 +319,7 @@ export const projects = [
     //     link: 'https://github.com/adrianhajdin/project_next13_car_showcase',
     // },
     
-    // {
-    //     iconUrl: estate,
-    //     theme: 'btn-back-black',
-    //     name: 'Real-Estate Application',
-    //     description: 'Developed a web application for real estate listings, facilitating property searches and connecting buyers with sellers.',
-    //     link: 'https://github.com/adrianhajdin/projects_realestate',
-    // },
+    
     // {
     //     iconUrl: summiz,
     //     theme: 'btn-back-yellow',

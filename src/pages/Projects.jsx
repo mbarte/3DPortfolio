@@ -14,7 +14,6 @@ const Projects = () => {
             <div className="mt-5 flex flex-col gap-3 text-slate-500">
                 <p className="text-lg mb-4">
                     I have embarqued on numerous projects throughout the years, and this is a non-exhaustive list of side-projects that will be continuously updated. Feel free to explore the codebase, where available, and contribute with your ideas for further development.
-                    Your collaboration is highly valuable!
                 </p>
             </div>
             <div className="flex flex-wrap my-20 gap-16">

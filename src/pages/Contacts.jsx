@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef, Suspense } from 'react'
 import { Canvas } from "@react-three/fiber";  
 import emailjs from '@emailjs/browser';
+import { socialLinks } from '../constants';
 
 import Loader from "../components/Loader";
 import Avatar from '../models/Avatar.jsx'
@@ -65,6 +66,15 @@ const Contacts = () => {
           
             <div className="flex-1 min-w-[50%] flex flex-col">
                 <h1 className="head-text">Let's get in touch!</h1>
+                
+                <div className="flex gap-4 mt-2 mb-4">
+                    {socialLinks.map((social) => (
+                        <a key={social.name} href={social.link} target="_blank" rel="noopener noreferrer">
+                            <img src={social.iconUrl} alt={social.name} className="w-8 h-8" />
+                        </a>
+                    ))}
+                </div>
+
                 <form className="w-full flex flex-col gap-7"
                     onSubmit={handleSubmit}
                     ref={formRef}
@@ -123,6 +133,7 @@ const Contacts = () => {
             </div>
 
             <div className="flex items-center justify-center lg:w-1/2 w-full lg:h-auto md:h-[600px] h-[500px]">
+                    
             <Canvas
                 camera ={{position: [0, 0, 2],
                     fov: 75,
@@ -131,7 +142,7 @@ const Contacts = () => {
                 }}>
                     <directionalLight intensity={2.5} position={[0, 0, 1]}/>
                     <ambientLight intensity={1}/>
-                <Suspense fallback={null}>
+                <Suspense fallback={<Loader/>}>
                     <Avatar 
                         currentAnimation={currentAnimation}
                         position={[0.2,-0.3,0]}

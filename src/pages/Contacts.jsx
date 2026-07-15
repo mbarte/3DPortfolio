@@ -95,7 +95,7 @@ const Contacts = () => {
 
                     <label className="text-black-500 font-semibold">
                         Email
-                        <input type="text"
+                        <input type="email"
                             name="email"
                             className="input"
                             placeholder="john@email.com"

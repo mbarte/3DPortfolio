@@ -7,7 +7,7 @@ An interactive 3D portfolio website built with React and Three.js. Explore a 3D 
 - [React 19](https://react.dev/) + [Vite](https://vite.dev/)
 - [React Three Fiber](https://docs.pmnd.rs/react-three-fiber/) + [Drei](https://drei.docs.pmnd.rs/) for 3D rendering
 - [Tailwind CSS 4](https://tailwindcss.com/) for styling
-- [React Spring](https://www.react-spring.dev/) for 3D animations
+- [React Spring](https://www.react-spring.dev/) for 3D animations"
 - [EmailJS](https://www.emailjs.com/) for contact form
 
 ## Getting Started

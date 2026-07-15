@@ -26,12 +26,12 @@ const TypingInfoBox = ({text, link, btnText, onClick}) => {
 
   return (
     <div className="sm:text-xl sm:leading-snug text-center py-4 px-8 text-white mx-5">
-      <p className='bg-amber-400 px-4 rounded-xl'>{displayed}{!done && <span className="animate-cursor">▌</span>}</p>
+      <p className='bg-gradient-to-r from-[#f7d433] to-[#fe9a00] px-4 rounded-lg'>{displayed}{!done && <span className="animate-cursor">▌</span>}</p>
       <br/>
       {btnText && (link ? (
         <Link to={link} className="btn">
-          <img src={infoIcon} className="text-white w-4 h-4 inline-block mr-2" alt="info icon"></img>
           {btnText}
+          <img src={infoIcon} className="text-white w-6 h-6 inline-block ml-1" alt="info icon"></img>
         </Link>
       ) : (
         <button onClick={onClick} className="btn">

@@ -287,7 +287,7 @@ export const projects = [
         iconUrl: website,
         theme: 'btn-back-green',
         name: 'Institutional Website',
-        description: 'Configured and managed a Digital Ocean VPS. Coded and developed a website supporting a real business, with SEO/GEO optimisation.',
+        description: 'Configured and managed a VPS. Coded and developed a website supporting a real business, with SEO/GEO optimisation.',
         link: 'https://noemibartesaghipsicologa.com',
     },
     {

@@ -114,8 +114,8 @@ const Home = () => {
         
         
 
-        <section className="w-full h-screen relative">
-            <div className="absolute bottom-32 left-0 right-0 z-10 flex items-center justify-center">
+        <section className="w-full h-dvh relative">
+            <div className="absolute bottom-20 md:bottom-32 left-0 right-0 z-10 flex items-center justify-center">
                 {currentStage && <HomeInfo currentStage = {currentStage} setCurrentStage={setCurrentStage}/>}
             </div>
 
@@ -178,8 +178,8 @@ const Home = () => {
             </Canvas>
 
 
-            <div className="absolute bottom-6 left-0 right-0 flex justify-center">
-                <p className="text-amber-400/75 text-sm whitespace-nowrap">Navigate around by dragging or using arrows to explore</p>
+            <div className="absolute  bottom-16 md:bottom-6 left-0 right-0 flex justify-center">
+                <p className="text-amber-400/75 text-xs md:text-sm whitespace-nowrap">Navigate around by dragging or using arrows to explore</p>
             </div>
             <div
             className="absolute bottom-2 left-2 flex items-center gap-3"
@@ -189,7 +189,7 @@ const Home = () => {
             <img
                 src={!isPlayingMusic ? soundoff : soundon}
                 alt={isPlayingMusic ? "Mute music" : "Play music"}
-                className="w-10 h-10 cursor-pointer object-contain"
+                className="md:w-10 md:h-10 h-6 w-6 cursor-pointer object-contain"
                 onClick={() => setIsPlayingMusic(!isPlayingMusic)}
                 onFocus={() => setShowCredit(true)}
                 onBlur={() => setShowCredit(false)}

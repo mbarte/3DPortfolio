@@ -25,7 +25,7 @@ import snapgram from './snapgram.svg'
 import summiz from './summiz.svg'
 import threads from './threads.svg'
 import arrow from './arrow.svg'
-import contact from './contact.svg'
+import contact from './contact.png'
 import soundon from './soundon.png'
 import soundoff from './soundoff.png'
 import microsoft from './microsoft.svg'
@@ -48,6 +48,8 @@ import playwright from './playwright.svg'
 import website from './website.png'
 import neuralnetwork from './neuralnetwork.png'
 import infoIcon from './info.png'
+import about from './about.svg'
+import project from './project.png'
 
 export {
     css,
@@ -99,5 +101,7 @@ export {
     playwright,
     website,
     neuralnetwork,
-    infoIcon
+    infoIcon,
+    project,
+    about
 }

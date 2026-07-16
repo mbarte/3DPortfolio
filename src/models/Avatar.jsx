@@ -11,12 +11,20 @@ import { SkeletonUtils } from 'three-stdlib'
 
 import avatarScene from '../assets/3d/avatar.glb'
 
-const Avatar = ({currentAnimation, ...props}) => {  
+const Avatar = ({currentAnimation, hairColor, ...props}) => {
   const group = useRef()
   const { scene, animations } = useGLTF(avatarScene)
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene])
   const { nodes, materials } = useGraph(clone)
   const { actions } = useAnimations(animations, group)
+
+  useEffect(() => {
+    if (hairColor && materials.avaturn_hair_0_material) {
+      materials.avaturn_hair_0_material.map = null
+      materials.avaturn_hair_0_material.color.set(hairColor)
+      materials.avaturn_hair_0_material.needsUpdate = true
+    }
+  }, [hairColor, materials])
 
   useEffect(()=> {
     Object.values(actions).forEach((action)=>action.stop());

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef, Suspense } from 'react'
-import { Canvas } from "@react-three/fiber";  
+import { Canvas, useThree } from "@react-three/fiber";
 import emailjs from '@emailjs/browser';
 import { socialLinks } from '../constants';
 
@@ -7,6 +7,14 @@ import Loader from "../components/Loader";
 import Avatar from '../models/Avatar.jsx'
 import useAlert from '../hooks/useAlert.js';
 import Alert from '../components/Alert.jsx';
+
+const CameraZoom = ({ currentAnimation }) => {
+  const { camera } = useThree()
+  useEffect(() => {
+    camera.position.z = currentAnimation === 'cheering' ? 2.8 : 2
+  }, [currentAnimation, camera])
+  return null
+}
 
 const Contacts = () => {
     const formRef = useRef(null)
@@ -61,12 +69,11 @@ const Contacts = () => {
     }
 
     return (
-        <section className="relative flex lg:flex-row flex-col max-container !min-h-screen">
+        <section className="relative flex lg:flex-row flex-col max-container !min-h-screen gap-12">
             {alert.show && <Alert {...alert}/>}
           
             <div className="flex-1 min-w-[50%] flex flex-col">
                 <h1 className="head-text">Let's get in touch!</h1>
-                
                 <div className="flex gap-4 mt-2 mb-4">
                     {socialLinks.map((social) => (
                         <a key={social.name} href={social.link} target="_blank" rel="noopener noreferrer">
@@ -74,6 +81,9 @@ const Contacts = () => {
                         </a>
                     ))}
                 </div>
+                <p className="text-amber-500 text-md text-center italic">
+                    P.S. I haven't gone bald yet because of this job. If the avatar loads without hair, it's a bug — drop me a message if you know how to fix it!
+                </p>
 
                 <form className="w-full flex flex-col gap-7"
                     onSubmit={handleSubmit}
@@ -132,25 +142,28 @@ const Contacts = () => {
                 </form>
             </div>
 
-            <div className="flex items-center justify-center lg:w-1/2 w-full lg:h-auto md:h-[600px] h-[500px]">
+            <div className="flex flex-col items-center justify-center lg:w-1/2 w-full lg:h-auto md:h-[600px] h-[500px]">
                     
-            <Canvas
-                camera ={{position: [0, 0, 2],
-                    fov: 75,
-                    near:0.1,
-                    far:1000
-                }}>
-                    <directionalLight intensity={2.5} position={[0, 0, 1]}/>
-                    <ambientLight intensity={1}/>
-                <Suspense fallback={<Loader/>}>
-                    <Avatar 
-                        currentAnimation={currentAnimation}
-                        position={[0.2,-0.3,0]}
-                        rotation={[0.5,-0.4,0]}
-                        scale={[1, 1, 1]}/>
-                </Suspense>
-            </Canvas>
-            </div>
+                <Canvas
+                    camera ={{position: [0, 0, 2],
+                        fov: 75,
+                        near:0.1,
+                        far:1000
+                    }}>
+                        <directionalLight intensity={2.5} position={[0, 0, 1]}/>
+                        <ambientLight intensity={1}/>
+                        <CameraZoom currentAnimation={currentAnimation} />
+                    <Suspense fallback={<Loader/>}>
+                        <Avatar 
+                            currentAnimation={currentAnimation}
+                            hairColor="#a76818"
+                            position={[0.2, currentAnimation === 'cheering' ? -0.6 : -0.3, 0]}
+                            rotation={[0.5,-0.4,0]}
+                            scale={[0.8, 0.8, 0.8]}/>
+                    </Suspense>
+                </Canvas>
+            </div>  
+            
         </section>
     )
 }

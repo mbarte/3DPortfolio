@@ -1,8 +1,6 @@
 import { NavLink } from "react-router-dom"
 import home from "../assets/icons/home.png"
-import about from "../assets/icons/about.svg"
-import project from "../assets/icons/project.png"
-import contact from "../assets/icons/contact.png"
+import {about, project, contact} from "../assets/icons"
 
 const Navbar = () => {
     return (
@@ -12,7 +10,7 @@ const Navbar = () => {
             <p className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-600">
                 <img
                     src={home}
-                    className="h-5 w-5">
+                    className="h-5 w-5 md:h-8 md:w-8">
                 </img>
             </p>
         </NavLink>

@@ -25,13 +25,13 @@ const TypingInfoBox = ({text, link, btnText, onClick}) => {
   }, [count, graphemes.length])
 
   return (
-    <div className="sm:text-xl sm:leading-snug text-center py-4 px-8 text-white mx-5">
-      <p className='bg-gradient-to-r from-[#f7d433] to-[#fe9a00] px-4 rounded-lg'>{displayed}{!done && <span className="animate-cursor">▌</span>}</p>
+    <div className="glassmorphism sm:text-xl sm:leading-snug text-center py-4 px-10 text-slate-900 mx-5 rounded-xl">
+      <p className='bg-gradient-to-r from-[#f7d433] to-[#fe9a00] px-4 py-8 rounded-lg'>{displayed}{!done && <span className="animate-cursor">▌</span>}</p>
       <br/>
       {btnText && (link ? (
         <Link to={link} className="btn">
           {btnText}
-          <img src={infoIcon} className="text-white w-6 h-6 inline-block ml-1" alt="info icon"></img>
+          {/* <img src={infoIcon} className="text-white w-10 h-10 inline-block ml-1" alt="info icon"></img> */}
         </Link>
       ) : (
         <button onClick={onClick} className="btn">
@@ -51,15 +51,15 @@ const renderContent = {
   ),
   2: () => (
       <TypingInfoBox
-        text="Learn more about my story 📖"
+        text="I gained experience in different scenarios and roles 📖"
         link="/about"
-        btnText="More"/> 
+        btnText="Learn more"/> 
   ),
   3: () => (
     <TypingInfoBox
-    text="Learn more about my projects 💡"
+    text="I carried out various projects 💡"
     link="/projects"
-    btnText="More"/> 
+    btnText="See more"/> 
   ),
   4: () => (
     <TypingInfoBox

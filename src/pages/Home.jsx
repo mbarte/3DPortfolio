@@ -1,7 +1,6 @@
-import React, { useState, Suspense, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Canvas } from "@react-three/fiber";   
 import {Environment, useProgress} from "@react-three/drei";
-import Loader from "../components/Loader";
 import Town from "../models/Town";
 import Parrot from "../models/Parrot";
 import HomeInfo from "../components/HomeInfo";
@@ -95,8 +94,6 @@ const Home = () => {
     const [parrotScale, parrotPosition] = adjustParrotForScreenSize();
     const exclamationPositions = adjustExclamationForScreenSize();
 
-
-
     return (
         <>
         {showSplash &&(
@@ -171,7 +168,6 @@ const Home = () => {
                         setCurrentStage = {setCurrentStage}
                         currentStage = {currentStage}
                         exclamationPositions={exclamationPositions}
-
                     />
 
                 {/* </Suspense> */}

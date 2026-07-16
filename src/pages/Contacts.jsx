@@ -156,7 +156,7 @@ const Contacts = () => {
                     <Suspense fallback={<Loader/>}>
                         <Avatar 
                             currentAnimation={currentAnimation}
-                            hairColor="#a76818"
+                            hairColor="#c47c5d" // #c48c4d, #b99572, #af6a0f
                             position={[0.2, currentAnimation === 'cheering' ? -0.6 : -0.3, 0]}
                             rotation={[0.5,-0.4,0]}
                             scale={[0.8, 0.8, 0.8]}/>

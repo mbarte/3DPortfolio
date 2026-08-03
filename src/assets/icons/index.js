@@ -50,6 +50,7 @@ import neuralnetwork from './neuralnetwork.png'
 import infoIcon from './info.png'
 import about from './about.svg'
 import project from './project.png'
+import agent from './agent.png'
 
 export {
     css,
@@ -103,5 +104,6 @@ export {
     neuralnetwork,
     infoIcon,
     project,
-    about
+    about,
+    agent
 }

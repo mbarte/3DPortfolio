@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
@@ -7,8 +7,6 @@ import { experiences, skills } from "../constants";
 import CTA from "../components/CTA";
 
 const About = () => {
-    const [activeSkill, setActiveSkill] = useState(null);
-
     return (
         <section className="max-container">
             <h1 className="head-text flex gap-3">
@@ -35,28 +33,20 @@ const About = () => {
                             </h4>
                             <div className="flex flex-wrap gap-8">
                                 {items.map((skill) => (
-                                    <div key={skill.name}
-                                        className="w-15 h-15 block-container relative"
-                                        onMouseEnter={() => setActiveSkill(skill.name)}
-                                        onMouseLeave={() => setActiveSkill(null)}
-                                        onFocus={() => setActiveSkill(skill.name)}
-                                        onBlur={() => setActiveSkill(null)}
-                                    >
-                                        <div className="btn-back rounded-xl">
-                                            <div className="btn-front rounded-xl flex justify-center items-center">
+                                    <div key={skill.name} className="w-15 h-15 flip-card">
+                                        <div className="flip-inner">
+                                            <div className="flip-front rounded-xl flex justify-center items-center">
                                                 <img src={skill.imageUrl}
                                                     alt={skill.name}
                                                     className="w-1/2 h-1/2 object-contain">
                                                 </img>
                                             </div>
-                                        </div>
-                                        {activeSkill === skill.name && (
-                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 z-10 pointer-events-none transition-opacity duration-200">
-                                                <p className="text-xs text-amber-600 font-medium whitespace-nowrap bg-white/90 px-2 py-1 rounded shadow-sm">
+                                            <div className="flip-back rounded-xl flex justify-center items-center">
+                                                <p className="text-xs font-semibold text-white text-center px-2">
                                                     {skill.name}
                                                 </p>
                                             </div>
-                                        )}
+                                        </div>
                                     </div>
                                 ))}
                             </div>

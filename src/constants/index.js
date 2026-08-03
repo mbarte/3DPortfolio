@@ -44,7 +44,8 @@ import {
     nginx, 
     playwright,
     website,
-    neuralnetwork
+    neuralnetwork,
+    agent
 } from "../assets/icons";
 
 export const skills = [
@@ -276,6 +277,13 @@ export const socialLinks = [
 ];
 
 export const projects = [
+     {
+        iconUrl: agent,
+        theme: 'btn-back-blue',
+        name: 'SegretarIA',
+        description: 'Creating a local assistant leveraging inboxes and more to enhance daily productivity and save time, (to learn how to build an AI agent)',
+        link: 'https://github.com/mbarte/segretarIA',
+    },
     {
         iconUrl: estate,
         theme: 'btn-back-black',
@@ -304,13 +312,7 @@ export const projects = [
         description: 'Designed and trained machine learning models for image classification.',
         link: 'https://github.com/mbarte/AMD',
     },
-    // {
-    //     iconUrl: threads,
-    //     theme: 'btn-back-green',
-    //     name: 'Full Stack Threads Clone',
-    //     description: 'Created a full-stack replica of the popular discussion platform "Threads," enabling users to post and engage in threaded conversations.',
-    //     link: 'https://github.com/adrianhajdin/threads',
-    // },
+   
     // {
     //     iconUrl: car,
     //     theme: 'btn-back-blue',
